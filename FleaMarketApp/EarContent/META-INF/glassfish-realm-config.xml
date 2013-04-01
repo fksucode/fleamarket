@@ -1,0 +1,15 @@
+<!-- Snippet from the GlassFish config for JDBC realm. -->
+<!-- IMPORTANT: This is not a deployment config as glassfish-resources.xml. -->
+<auth-realm name="jdbc-realm"
+	classname="com.sun.enterprise.security.auth.realm.jdbc.JDBCRealm">
+	<property name="jaas-context" value="jdbcRealm"></property>
+	<property name="password-column" value="PASS"></property>
+	<property name="datasource-jndi" value="jdbc/__default"></property>
+	<property name="group-table" value="APP.T_USER_GROUP"></property>
+	<property name="charset" value="UTF-8"></property>
+	<property name="user-table" value="APP.T_USER"></property>
+	<property name="group-name-column" value="GROUP_ID"></property>
+	<property name="digest-algorithm" value="SHA-256"></property>
+	<property name="user-name-column" value="USER_ID"></property>
+	<property name="encoding" value="Hex"></property>
+</auth-realm>

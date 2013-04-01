@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="FleaMarketApp">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="FleaMarketWeb.war" deploy-path="/" handle="module:/resource/FleaMarketWeb/FleaMarketWeb">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="FleaMarketEJB.jar" deploy-path="/" handle="module:/resource/FleaMarketEJB/FleaMarketEJB">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="FleaMarketDomain.jar" deploy-path="/lib" handle="module:/resource/FleaMarketDomain/FleaMarketDomain">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

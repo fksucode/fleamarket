@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC "-//GlassFish.org//DTD GlassFish Application Server 3.1 Resource Definitions//EN"
+        "http://glassfish.org/dtds/glassfish-resources_1_5.dtd">
+<resources>
+
+	<!-- JDBC Configuration (start) -->
+    <jdbc-connection-pool
+            name="java:app/jdbc/FleaConnectionPool"
+            res-type="javax.sql.DataSource"
+            datasource-classname="org.apache.derby.jdbc.ClientDataSource"
+            max-pool-size="10"
+            pool-resize-quantity="10">
+        <property name="serverName" value="localhost"/>
+        <property name="PortNumber" value="1527"/>
+        <property name="User" value="APP"/>
+        <property name="Password" value="APP"/>
+        <property name="DatabaseName" value="FLEADB"/>
+        <property name="connectionAttributes" value=";create=true"/>
+    </jdbc-connection-pool>
+    
+    <jdbc-resource
+            pool-name="java:app/jdbc/FleaConnectionPool"
+            jndi-name="java:app/jdbc/FleaDataSource"/>
+    <!-- JDBC Configuration (end) -->
+	
+	<!-- JMS Configuration (start) -->
+	<connector-connection-pool 
+			name="java:app/jms/FleaConnectionFactory" 
+			connection-definition-name="javax.jms.QueueConnectionFactory"
+			resource-adapter-name="jmsra"/>
+	    
+    <connector-resource 
+    		pool-name="java:app/jms/FleaConnectionFactory"
+			jndi-name="java:app/jms/FleaConnectionFactory"/>
+    
+    <admin-object-resource 
+			jndi-name="java:app/jms_ShippingQueue"
+			res-type="javax.jms.Queue" 
+    		res-adapter="jmsra">
+      	<property name="Name" value="ShippingQueue" />
+    </admin-object-resource>
+    <!-- JMS Configuration (end) -->
+
+    <!-- JavaMAIL Configuration (start) -->   
+	<!-- <mail-resource 
+			jndi-name="java:app/mail/FksuExamples"
+			host="173.194.70.108"
+			user="examples.fksu@gmail.com"
+			from="examples.fksu@gmail.com">
+		<property name="mail.smtp.socketFactory.class" value="javax.net.ssl.SSLSocketFactory"/>
+		<property name="mail.smtp.socketFactory.fallback" value="false"/>
+		<property name="mail.smtp.socketFactory.port" value="465"/>
+		<property name="mail.smtp.port" value="465"/>
+		<property name="mail.smtp.auth" value="true"/>
+		<property name="mail.smtp.password" value="3x@mpl3sFksucode"/>
+	</mail-resource> -->
+	<mail-resource 
+			jndi-name="java:app/mail/FksuExamples"
+			host="localhost"
+			user="mailer@localhost"
+			from="mailer@localhost"> <!--http://james.apache.org/ (telnet localhost 4555)  -->
+		<property name="mail.transport.protocol" value="smtp"/>
+		<property name="mail.smtp.socketFactory.port" value="25"/>
+		<property name="mail.smtp.port" value="25"/>
+		<property name="mail.smtp.auth" value="true"/>
+		<property name="mail.smtp.password" value="mailer"/>
+	</mail-resource>
+	<!-- JavaMAIL Configuration (end) -->       
+</resources>

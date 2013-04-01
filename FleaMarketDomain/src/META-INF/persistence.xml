@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="FleaMarketDomain">
+		<jta-data-source>java:app/jdbc/FleaDataSource</jta-data-source>
+		<mapping-file>META-INF/orm.xml</mapping-file>
+		
+		<class>bg.tusofia.fksu.pe.fleamarket.domain.Bid</class>
+		<class>bg.tusofia.fksu.pe.fleamarket.domain.Bidder</class>
+		<class>bg.tusofia.fksu.pe.fleamarket.domain.BillingInfo</class>
+		<class>bg.tusofia.fksu.pe.fleamarket.domain.Item</class>
+		<class>bg.tusofia.fksu.pe.fleamarket.domain.Seller</class>
+		<class>bg.tusofia.fksu.pe.fleamarket.domain.User</class>
+		<class>bg.tusofia.fksu.pe.fleamarket.domain.Order</class>
+		<class>bg.tusofia.fksu.pe.fleamarket.domain.ShippingInfo</class>
+		<class>bg.tusofia.fksu.pe.fleamarket.domain.Group</class>
+		<properties>
+			<property name="eclipselink.logging.logger" value="org.eclipse.persistence.logging.DefaultSessionLog"/>
+			<property name="eclipselink.logging.level" value="FINE"/>
+		</properties>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,9 @@
+#This file contains JPA Diagram Editor settings
+#Fri Mar 01 01:56:51 EET 2013
+defaultTableNamePrefix=T_
+directEditAffectsClass=true
+accessType=property
+diagramFolder=diagrams
+collectionType=collection
+oneToManyOldStyle=false
+defaultPackage=bg.tusofia.fksu.pe.fleamarket.domain

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.4"
+	xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.eclipse.org/eclipselink/xsds/persistence/orm http://www.eclipse.org/eclipselink/xsds/eclipselink_orm_2_4.xsd">
+	<persistence-unit-metadata>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+
+	<!-- NOTE: jpa/query - named query declaration -->
+	<named-query name="fleamarket.getAllUsers">
+		<query>select u from User u</query>
+	</named-query>
+
+	<named-query name="fleamarket.getAvailableItems">
+		<query>select i from Item i where i.bidEndDate >= :current_date order by size(i.bids) desc</query>
+	</named-query>
+	
+	<named-query name="fleamarket.getWinningBid">
+		<query>select b from Bid b left join fetch b.item where b.item.itemId = :item_id order by b.bidPrice desc</query>
+	</named-query>
+	
+	<named-query name="fleamarket.getBidsByUser">
+		<query>select b from Bid b where b.bidder.userId = :bidder_id order by b.bidDate desc</query>
+	</named-query>
+	
+	<named-query name="fleamarket.getBidsByUserAndStatus">
+		<query>select b from Bid b where b.bidder.userId = :bidder_id and b.bidStatus = :status order by b.bidDate desc</query>
+	</named-query>
+	
+	<named-query name="fleamarket.isItemWonByBidder">
+		<query>select b from Bid b where b.bidder.userId = :bidder_id and b.bidStatus = bg.tusofia.fksu.pe.fleamarket.domain.BidStatus.WINNER and b.item.itemId = :item_id</query>
+	</named-query>
+	
+	<named-query name="fleamarket.isItemWon">
+		<query>select b from Bid b where b.bidStatus = bg.tusofia.fksu.pe.fleamarket.domain.BidStatus.WINNER and b.item.itemId = :item_id</query>
+	</named-query>
+</entity-mappings>
